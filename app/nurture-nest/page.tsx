@@ -1,7 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 import { Caveat, Nunito } from "next/font/google";
 import { GalleryCursor } from "@/components/gallery-cursor";
+import { SiteNav } from "@/components/site-nav";
 
 const nunito = Nunito({
   subsets: ["latin"],
@@ -106,53 +106,19 @@ export default function NurtureNestPage() {
   return (
     <>
       <GalleryCursor />
-      <nav className="fixed left-0 right-0 top-0 z-50 bg-background/60 backdrop-blur-xl">
-        <div className="mx-auto flex w-full max-w-[1920px] items-center justify-between px-8 py-6">
-          <Link
-            className="font-headline text-[1.45rem] font-black lowercase tracking-[-0.05em] text-heading italic"
-            href="/"
-          >
-            <span className="text-heading">jaden</span>
-            <span className="inline-block bg-[linear-gradient(90deg,#d7deff_0%,#9dacff_58%,#6f86ff_100%)] bg-clip-text pr-[1.06em] text-transparent">
-              cook.design
-            </span>
-          </Link>
-          <div className="hidden gap-12 md:flex">
-            <Link
-              className="font-headline text-sm font-bold uppercase tracking-[-0.04em] text-nav-muted transition-colors hover:text-heading"
-              href="/"
-            >
-              Home
-            </Link>
-            <Link
-              className="border-b-2 border-primary pb-1 font-headline text-sm font-bold uppercase tracking-[-0.04em] text-primary"
-              href="/#work"
-            >
-              Projects
-            </Link>
-            <Link
-              className="font-headline text-sm font-bold uppercase tracking-[-0.04em] text-nav-muted transition-colors hover:text-heading"
-              href="/#contact"
-            >
-              Contact
-            </Link>
-          </div>
-          <button
-            aria-label="Open navigation"
-            className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 text-primary md:hidden"
-            type="button"
-          >
-            <span className="block h-0.5 w-5 bg-current" />
-            <span className="block h-0.5 w-5 bg-current" />
-            <span className="block h-0.5 w-5 bg-current" />
-          </button>
-        </div>
-      </nav>
+      <SiteNav
+        containerClassName="mx-auto flex w-full max-w-[1920px] items-center justify-between px-6 py-6 sm:px-8 sm:py-6"
+        items={[
+          { label: "HOME", href: "/" },
+          { label: "PROJECTS", href: "/#work", active: true },
+          { label: "CONTACT", href: "/#contact" },
+        ]}
+      />
 
-      <main className="bg-[#FFFFFF] pt-32 text-[#2b312d]">
-        <section className="mx-auto max-w-[1920px] px-8 pb-28">
+      <main className="bg-[#FFFFFF] pt-24 text-[#2b312d] sm:pt-32">
+        <section className="mx-auto max-w-[1920px] px-6 pb-20 sm:px-8 sm:pb-28">
           <div className="grid items-start gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
-            <div className="max-w-2xl pt-8">
+            <div className="max-w-2xl pt-4 sm:pt-8">
               <div className="mb-10 inline-flex rounded-full bg-[#edf5ec] px-6 py-3">
                 <span className="font-body text-lg text-[#74b58b]">
                   UI/UX Case Study
@@ -166,20 +132,20 @@ export default function NurtureNestPage() {
                 Support and Recovery, Simplified
               </p>
 
-              <div className="mt-10 flex gap-6">
-                <div className="flex h-24 w-24 items-center justify-center rounded-full bg-[#f1f4f0]">
+              <div className="mt-10 flex gap-4 sm:gap-6">
+                <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#f1f4f0] sm:h-24 sm:w-24">
                   <Image
                     alt="Figma"
-                    className="h-14 w-14 object-contain"
+                    className="h-12 w-12 object-contain sm:h-14 sm:w-14"
                     height={56}
                     src="/figma.png"
                     width={56}
                   />
                 </div>
-                <div className="flex h-24 w-24 items-center justify-center rounded-full bg-[#f1f4f0]">
+                <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#f1f4f0] sm:h-24 sm:w-24">
                   <Image
                     alt="Google Docs"
-                    className="h-14 w-14 object-contain"
+                    className="h-12 w-12 object-contain sm:h-14 sm:w-14"
                     height={56}
                     src="/google-docs.png"
                     width={56}
@@ -191,7 +157,7 @@ export default function NurtureNestPage() {
                 <h2 className="font-headline text-4xl font-semibold tracking-[-0.04em] text-[#74b58b]">
                   Overview
                 </h2>
-                <p className="mt-6 max-w-2xl font-body text-xl leading-relaxed text-[#4f5753]">
+                <p className="mt-6 max-w-2xl font-body text-lg leading-relaxed text-[#4f5753] sm:text-xl">
                   Nurture Nest is a postpartum support and recovery planner
                   designed to reduce mental load for new mothers during the
                   early weeks after birth. The product helps coordinate help
@@ -202,7 +168,7 @@ export default function NurtureNestPage() {
               </div>
             </div>
 
-            <div className="relative overflow-hidden rounded-[2rem] bg-[#f2f6ef] p-6 md:p-8">
+            <div className="relative overflow-hidden rounded-[2rem] bg-[#f2f6ef] p-4 sm:p-6 md:p-8">
               <div className="pointer-events-none absolute -right-10 -top-12 h-48 w-48 rounded-full bg-[#c9dec7]/60 blur-2xl" />
               <div className="pointer-events-none absolute -bottom-10 -left-8 h-40 w-40 rounded-full bg-[#c9dec7]/60 blur-2xl" />
               <Image
@@ -217,13 +183,13 @@ export default function NurtureNestPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-5xl px-8 pb-32">
+        <section className="mx-auto max-w-5xl px-6 pb-20 sm:px-8 sm:pb-32">
           <div className="space-y-24 text-center">
             <div>
               <h2 className="font-headline text-[clamp(2.2rem,4vw,3.2rem)] font-semibold tracking-[-0.04em] text-[#202522]">
                 Problem <span className="text-[#74b58b]">Statement</span>
               </h2>
-              <p className="mx-auto mt-8 max-w-4xl font-body text-xl leading-relaxed text-[#3f4742]">
+              <p className="mx-auto mt-8 max-w-4xl font-body text-lg leading-relaxed text-[#3f4742] sm:text-xl">
                 A first-time postpartum mother is a sleep-deprived parent
                 navigating recovery, hormonal changes, and newborn care who
                 needs a low-effort way to request help and track her wellbeing
@@ -236,7 +202,7 @@ export default function NurtureNestPage() {
               <h2 className="font-headline text-[clamp(2.2rem,4vw,3.2rem)] font-semibold tracking-[-0.04em] text-[#202522]">
                 Possible <span className="text-[#74b58b]">Solution</span>
               </h2>
-              <p className="mx-auto mt-8 max-w-4xl font-body text-xl leading-relaxed text-[#3f4742]">
+              <p className="mx-auto mt-8 max-w-4xl font-body text-lg leading-relaxed text-[#3f4742] sm:text-xl">
                 Nurture Nest is a postpartum support and recovery planner that
                 helps new mothers coordinate help, track their physical and
                 emotional wellbeing, and manage medical appointments, all
@@ -249,7 +215,7 @@ export default function NurtureNestPage() {
               <h2 className="font-headline text-[clamp(2.2rem,4vw,3.2rem)] font-semibold tracking-[-0.04em] text-[#202522]">
                 Target <span className="text-[#74b58b]">Audience</span>
               </h2>
-              <ul className="mx-auto mt-8 max-w-4xl list-disc space-y-3 pl-6 text-left font-body text-xl leading-relaxed text-[#3f4742] marker:text-[#74b58b]">
+              <ul className="mx-auto mt-8 max-w-4xl list-disc space-y-3 pl-6 text-left font-body text-lg leading-relaxed text-[#3f4742] marker:text-[#74b58b] sm:text-xl">
                 <li>
                   <strong>Postpartum mothers</strong> who are recovering
                   physically + emotionally and need simple, low-effort support
@@ -274,12 +240,12 @@ export default function NurtureNestPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-[1920px] px-8 pb-36">
-          <div className="rounded-[2rem] bg-[#FFFFFF] px-8 py-16 md:px-12 md:py-20">
+        <section className="mx-auto max-w-[1920px] px-6 pb-20 sm:px-8 sm:pb-36">
+          <div className="rounded-[2rem] bg-[#FFFFFF] px-5 py-12 sm:px-8 sm:py-16 md:px-12 md:py-20">
             <h2 className="text-center font-headline text-[clamp(2.4rem,4vw,4rem)] font-semibold tracking-[-0.05em] text-[#202522]">
               The <span className="text-[#74b58b]">Approach</span>
             </h2>
-            <p className="mx-auto mt-8 max-w-5xl text-center font-body text-lg leading-relaxed text-[#3f4742] md:text-xl">
+            <p className="mx-auto mt-6 max-w-5xl text-center font-body text-base leading-relaxed text-[#3f4742] sm:mt-8 sm:text-lg md:text-xl">
               To design a solution that genuinely supports mothers during the
               postpartum period, I followed a user-centered design process
               focused on understanding real experiences and reducing cognitive
@@ -298,10 +264,10 @@ export default function NurtureNestPage() {
               <div className="mt-8 grid gap-8 text-center md:grid-cols-5">
                 {approachSteps.map((step) => (
                   <div key={step.title}>
-                    <h3 className="font-headline text-3xl font-medium tracking-[-0.04em] text-[#202522] md:text-4xl">
+                    <h3 className="font-headline text-2xl font-medium tracking-[-0.04em] text-[#202522] sm:text-3xl md:text-4xl">
                       {step.title}
                     </h3>
-                    <div className="mt-4 space-y-1 font-body text-lg leading-relaxed text-[#3f4742] md:text-xl">
+                    <div className="mt-3 space-y-1 font-body text-base leading-relaxed text-[#3f4742] sm:mt-4 sm:text-lg md:text-xl">
                       {step.items.map((item) => (
                         <p key={item}>{item}</p>
                       ))}
@@ -313,19 +279,19 @@ export default function NurtureNestPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-[1920px] px-8 pb-36">
+        <section className="mx-auto max-w-[1920px] px-6 pb-20 sm:px-8 sm:pb-36">
           <h2 className="text-center font-headline text-[clamp(2.4rem,4vw,4rem)] font-semibold tracking-[-0.05em] text-[#202522]">
             My <span className="text-[#74b58b]">Role</span>
           </h2>
 
-          <div className="mt-12 rounded-[2rem] bg-[#86c99a] px-8 py-14 md:px-16 md:py-16">
+          <div className="mt-12 rounded-[2rem] bg-[#86c99a] px-5 py-10 sm:px-8 sm:py-14 md:px-16 md:py-16">
             <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
               {roleItems.map((item) => (
                 <div
                   key={item}
-                  className="flex min-h-20 items-center justify-center rounded-full bg-[#f4f7f0] px-8 py-5 text-center shadow-[0_10px_30px_rgba(86,140,104,0.16)]"
+                  className="flex min-h-18 items-center justify-center rounded-full bg-[#f4f7f0] px-6 py-4 text-center shadow-[0_10px_30px_rgba(86,140,104,0.16)] sm:min-h-20 sm:px-8 sm:py-5"
                 >
-                  <span className="font-body text-lg leading-tight text-[#202522] md:text-xl">
+                  <span className="font-body text-base leading-tight text-[#202522] sm:text-lg md:text-xl">
                     {item}
                   </span>
                 </div>
@@ -334,7 +300,7 @@ export default function NurtureNestPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-[1920px] px-8 pb-36">
+        <section className="mx-auto max-w-[1920px] px-6 pb-20 sm:px-8 sm:pb-36">
           <h2 className="text-center font-headline text-[clamp(2.4rem,4vw,4rem)] font-semibold tracking-[-0.05em] text-[#202522]">
             Project <span className="text-[#74b58b]">Timeline</span>
           </h2>
@@ -418,7 +384,7 @@ export default function NurtureNestPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-8 pb-36">
+        <section className="mx-auto max-w-7xl px-6 pb-20 sm:px-8 sm:pb-36">
           <h2 className="text-center font-headline text-[clamp(2.4rem,4vw,4rem)] font-semibold tracking-[-0.05em] text-[#202522]">
             <span className="text-[#74b58b]">Empathize</span> Phase
           </h2>
@@ -428,7 +394,7 @@ export default function NurtureNestPage() {
               Qualitative Research
             </h3>
 
-            <div className="mt-8 space-y-8 font-body text-lg leading-relaxed text-[#3f4742] md:text-xl">
+            <div className="mt-8 space-y-6 font-body text-base leading-relaxed text-[#3f4742] sm:space-y-8 sm:text-lg md:text-xl">
               <p>
                 Qualitative research was conducted to better understand the
                 challenges mothers experience during the early postpartum period
@@ -451,7 +417,7 @@ export default function NurtureNestPage() {
                 Interview Questions
               </h3>
 
-              <ul className="mt-8 list-disc space-y-3 pl-8 font-body text-lg leading-relaxed text-[#3f4742] marker:text-[#74b58b] md:text-xl">
+              <ul className="mt-8 list-disc space-y-3 pl-6 font-body text-base leading-relaxed text-[#3f4742] marker:text-[#74b58b] sm:pl-8 sm:text-lg md:text-xl">
                 <li>
                   What was your support situation like? (partner, family
                   nearby, etc.)
@@ -472,13 +438,13 @@ export default function NurtureNestPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-8 pb-36">
-          <div className="rounded-[2rem] bg-[#EDFCF3] px-10 py-12 md:px-14 md:py-14">
+        <section className="mx-auto max-w-7xl px-6 pb-20 sm:px-8 sm:pb-36">
+          <div className="rounded-[2rem] bg-[#EDFCF3] px-6 py-8 sm:px-10 sm:py-12 md:px-14 md:py-14">
             <h3 className="font-headline text-[clamp(2rem,3vw,3rem)] font-medium tracking-[-0.04em] text-[#74b58b]">
               Key Insight Derived
             </h3>
 
-            <ul className="mt-8 list-disc space-y-5 pl-8 font-body text-lg leading-relaxed text-[#202522] marker:text-[#202522] md:text-xl">
+            <ul className="mt-6 list-disc space-y-4 pl-6 font-body text-base leading-relaxed text-[#202522] marker:text-[#202522] sm:mt-8 sm:space-y-5 sm:pl-8 sm:text-lg md:text-xl">
               <li>
                 “I wished someone could just look at a list and pick something
                 instead of making me decide.”
@@ -521,7 +487,7 @@ export default function NurtureNestPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-8 pb-36">
+        <section className="mx-auto max-w-7xl px-6 pb-20 sm:px-8 sm:pb-36">
           <div className="space-y-28">
             {quantitativeInsights.map((item, index) => {
               const chart = (
@@ -584,7 +550,7 @@ export default function NurtureNestPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-8 pb-36">
+        <section className="mx-auto max-w-7xl px-6 pb-20 sm:px-8 sm:pb-36">
           <div className="rounded-[2rem] bg-[#EDFCF3] px-10 py-12 md:px-14 md:py-14">
             <h3 className="font-headline text-[clamp(2rem,3vw,3rem)] font-medium tracking-[-0.04em] text-[#74b58b]">
               Key Insight Derived
@@ -600,7 +566,7 @@ export default function NurtureNestPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-8 pb-36">
+        <section className="mx-auto max-w-7xl px-6 pb-20 sm:px-8 sm:pb-36">
           <h2 className="text-center font-headline text-[clamp(2.4rem,4vw,4rem)] font-semibold tracking-[-0.05em] text-[#202522]">
             Define <span className="text-[#74b58b]">Phase</span>
           </h2>
@@ -610,7 +576,7 @@ export default function NurtureNestPage() {
               Goal Statement
             </h3>
 
-            <div className="mt-8 space-y-8 font-body text-lg leading-relaxed text-[#3f4742] md:text-xl">
+            <div className="mt-8 space-y-6 font-body text-base leading-relaxed text-[#3f4742] sm:space-y-8 sm:text-lg md:text-xl">
               <p>
                 Our postpartum support and recovery planner will let users
                 coordinate support tasks, track recovery with daily check-ins,
@@ -629,14 +595,14 @@ export default function NurtureNestPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-8 pb-36">
+        <section className="mx-auto max-w-7xl px-6 pb-20 sm:px-8 sm:pb-36">
           <h2 className="font-headline text-[clamp(2.2rem,3.8vw,3.6rem)] font-semibold tracking-[-0.05em] text-[#202522]">
             User Persona
           </h2>
 
           <div className="mt-10 grid gap-8 xl:grid-cols-[0.72fr_1.28fr]">
-            <div className="rounded-[2rem] bg-white p-8 shadow-[0_18px_40px_rgba(32,37,34,0.08)]">
-              <div className="mx-auto h-40 w-40 overflow-hidden rounded-full bg-[radial-gradient(circle_at_50%_35%,#f8faf9_0%,#e8efea_100%)]">
+            <div className="rounded-[2rem] bg-white p-5 shadow-[0_18px_40px_rgba(32,37,34,0.08)] sm:p-8">
+              <div className="mx-auto h-32 w-32 overflow-hidden rounded-full bg-[radial-gradient(circle_at_50%_35%,#f8faf9_0%,#e8efea_100%)] sm:h-40 sm:w-40">
                 <Image
                   alt="Ashleigh Green"
                   className="h-full w-full object-cover"
@@ -649,7 +615,7 @@ export default function NurtureNestPage() {
                 Ashleigh Green
               </h3>
 
-              <dl className="mt-8 grid grid-cols-[auto_1fr] gap-x-6 gap-y-4 font-body text-lg leading-relaxed text-[#3f4742]">
+              <dl className="mt-8 grid grid-cols-[auto_1fr] gap-x-4 gap-y-3 font-body text-base leading-relaxed text-[#3f4742] sm:gap-x-6 sm:gap-y-4 sm:text-lg">
                 <dt className="font-semibold text-[#202522]">Age</dt>
                 <dd>29</dd>
                 <dt className="font-semibold text-[#202522]">Education</dt>
@@ -670,7 +636,7 @@ export default function NurtureNestPage() {
                   {["Calm", "Caring", "Organized"].map((trait) => (
                     <span
                       key={trait}
-                      className="rounded-full bg-[#edf7f1] px-5 py-2 font-body text-base text-[#4a524d]"
+                      className="rounded-full bg-[#edf7f1] px-4 py-2 font-body text-sm text-[#4a524d] sm:px-5 sm:text-base"
                     >
                       {trait}
                     </span>
@@ -682,7 +648,7 @@ export default function NurtureNestPage() {
                 <h4 className="text-center font-headline text-[clamp(1.8rem,2.5vw,2.4rem)] font-medium tracking-[-0.04em] text-[#74b58b]">
                   Brief Story
                 </h4>
-                <p className="mt-6 font-body text-lg leading-relaxed text-[#3f4742]">
+                <p className="mt-6 font-body text-base leading-relaxed text-[#3f4742] sm:text-lg">
                   Ashleigh is three weeks postpartum and adjusting to life with
                   her newborn while recovering physically and emotionally.
                   Although friends and family offer help, coordinating that
@@ -733,12 +699,12 @@ export default function NurtureNestPage() {
               ].map((section) => (
                 <div
                   key={section.title}
-                  className="rounded-[2rem] bg-[#EDFCF3] px-8 py-8"
+                  className="rounded-[2rem] bg-[#EDFCF3] px-5 py-6 sm:px-8 sm:py-8"
                 >
                   <h3 className="font-headline text-[clamp(1.9rem,2.6vw,2.6rem)] font-medium tracking-[-0.04em] text-[#74b58b]">
                     {section.title}
                   </h3>
-                  <ul className="mt-5 list-disc space-y-3 pl-6 font-body text-lg leading-relaxed text-[#3f4742] marker:text-[#202522]">
+                  <ul className="mt-5 list-disc space-y-3 pl-5 font-body text-base leading-relaxed text-[#3f4742] marker:text-[#202522] sm:pl-6 sm:text-lg">
                     {section.items.map((item) => (
                       <li key={item}>{item}</li>
                     ))}
@@ -749,10 +715,10 @@ export default function NurtureNestPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-8 pb-36">
+        <section className="mx-auto max-w-7xl px-6 pb-20 sm:px-8 sm:pb-36">
           <div className="grid gap-8 xl:grid-cols-[0.72fr_1.28fr]">
-            <div className="rounded-[2rem] bg-white p-8 shadow-[0_18px_40px_rgba(32,37,34,0.08)]">
-              <div className="mx-auto h-40 w-40 overflow-hidden rounded-full bg-[radial-gradient(circle_at_50%_35%,#f8faf9_0%,#e8efea_100%)]">
+            <div className="rounded-[2rem] bg-white p-5 shadow-[0_18px_40px_rgba(32,37,34,0.08)] sm:p-8">
+              <div className="mx-auto h-32 w-32 overflow-hidden rounded-full bg-[radial-gradient(circle_at_50%_35%,#f8faf9_0%,#e8efea_100%)] sm:h-40 sm:w-40">
                 <Image
                   alt="Luis Suarez"
                   className="h-full w-full object-cover"
@@ -765,7 +731,7 @@ export default function NurtureNestPage() {
                 Luis Suarez
               </h3>
 
-              <dl className="mt-8 grid grid-cols-[auto_1fr] gap-x-6 gap-y-4 font-body text-lg leading-relaxed text-[#3f4742]">
+              <dl className="mt-8 grid grid-cols-[auto_1fr] gap-x-4 gap-y-3 font-body text-base leading-relaxed text-[#3f4742] sm:gap-x-6 sm:gap-y-4 sm:text-lg">
                 <dt className="font-semibold text-[#202522]">Age</dt>
                 <dd>31</dd>
                 <dt className="font-semibold text-[#202522]">Education</dt>
@@ -786,7 +752,7 @@ export default function NurtureNestPage() {
                   {["Practical", "Reliable", "Creative"].map((trait) => (
                     <span
                       key={trait}
-                      className="rounded-full bg-[#edf7f1] px-5 py-2 font-body text-base text-[#4a524d]"
+                      className="rounded-full bg-[#edf7f1] px-4 py-2 font-body text-sm text-[#4a524d] sm:px-5 sm:text-base"
                     >
                       {trait}
                     </span>
@@ -798,7 +764,7 @@ export default function NurtureNestPage() {
                 <h4 className="text-center font-headline text-[clamp(1.8rem,2.5vw,2.4rem)] font-medium tracking-[-0.04em] text-[#74b58b]">
                   Brief Story
                 </h4>
-                <p className="mt-6 font-body text-lg leading-relaxed text-[#3f4742]">
+                <p className="mt-6 font-body text-base leading-relaxed text-[#3f4742] sm:text-lg">
                   Luis is a close friend of a new mother and wants to be
                   supportive during her postpartum recovery. He regularly
                   checks in and offers help, but often doesn&apos;t know what
@@ -846,12 +812,12 @@ export default function NurtureNestPage() {
               ].map((section) => (
                 <div
                   key={section.title}
-                  className="rounded-[2rem] bg-[#EDFCF3] px-8 py-8"
+                  className="rounded-[2rem] bg-[#EDFCF3] px-5 py-6 sm:px-8 sm:py-8"
                 >
                   <h3 className="font-headline text-[clamp(1.9rem,2.6vw,2.6rem)] font-medium tracking-[-0.04em] text-[#74b58b]">
                     {section.title}
                   </h3>
-                  <ul className="mt-5 list-disc space-y-3 pl-6 font-body text-lg leading-relaxed text-[#3f4742] marker:text-[#202522]">
+                  <ul className="mt-5 list-disc space-y-3 pl-5 font-body text-base leading-relaxed text-[#3f4742] marker:text-[#202522] sm:pl-6 sm:text-lg">
                     {section.items.map((item) => (
                       <li key={item}>{item}</li>
                     ))}
@@ -862,12 +828,12 @@ export default function NurtureNestPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-8 pb-36">
+        <section className="mx-auto max-w-7xl px-6 pb-20 sm:px-8 sm:pb-36">
           <h2 className="font-headline text-[clamp(2.2rem,3.8vw,3.6rem)] font-semibold tracking-[-0.05em] text-[#202522]">
             Empathy Map
           </h2>
 
-          <div className="relative mt-12 grid gap-8 md:grid-cols-2">
+          <div className="relative mt-12 grid gap-6 sm:gap-8 md:grid-cols-2">
             {[
               {
                 title: "Says",
@@ -908,12 +874,12 @@ export default function NurtureNestPage() {
             ].map((section) => (
               <div
                 key={section.title}
-                className="rounded-[2rem] bg-[#86c99a] px-8 py-8 text-white shadow-[0_18px_40px_rgba(116,181,139,0.2)]"
+                className="rounded-[2rem] bg-[#86c99a] px-5 py-6 text-white shadow-[0_18px_40px_rgba(116,181,139,0.2)] sm:px-8 sm:py-8"
               >
                 <h3 className="font-headline text-[clamp(2rem,3vw,3rem)] font-medium tracking-[-0.04em]">
                   {section.title}
                 </h3>
-                <ul className="mt-6 list-disc space-y-3 pl-6 font-body text-lg leading-relaxed md:text-xl">
+                <ul className="mt-5 list-disc space-y-3 pl-5 font-body text-base leading-relaxed sm:mt-6 sm:pl-6 sm:text-lg md:text-xl">
                   {section.items.map((item) => (
                     <li key={item}>{item}</li>
                   ))}
@@ -933,17 +899,17 @@ export default function NurtureNestPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-[1920px] px-8 pb-36">
+        <section className="mx-auto max-w-[1920px] px-6 pb-20 sm:px-8 sm:pb-36">
           <h2 className="text-center font-headline text-[clamp(2.4rem,4vw,4rem)] font-semibold tracking-[-0.05em] text-[#202522]">
             Ideate <span className="text-[#74b58b]">Phase</span>
           </h2>
 
           <div className="mt-14">
-            <h3 className="ml-[95px] font-headline text-[clamp(2rem,3vw,3rem)] font-semibold tracking-[-0.04em] text-[#202522]">
+            <h3 className="font-headline text-[clamp(2rem,3vw,3rem)] font-semibold tracking-[-0.04em] text-[#202522] sm:ml-[95px]">
               User Flow
             </h3>
 
-            <div className="mt-12 bg-[#FFFFFF] p-6 md:p-8">
+            <div className="mt-8 bg-[#FFFFFF] p-3 sm:mt-12 sm:p-6 md:p-8">
               <Image
                 alt="Nurture Nest user flow diagram"
                 className="h-auto w-full object-contain"
@@ -953,12 +919,12 @@ export default function NurtureNestPage() {
               />
             </div>
 
-            <div className="mx-[95px] mt-20 rounded-[2rem] bg-[#EDFCF3] p-8">
+            <div className="mt-12 rounded-[2rem] bg-[#EDFCF3] p-6 sm:mx-[95px] sm:mt-20 sm:p-8">
               <h3 className="font-headline text-[clamp(2rem,3vw,3rem)] font-medium tracking-[-0.04em] text-[#74b58b]">
                 How Might We
               </h3>
 
-              <ul className="mt-8 list-disc space-y-4 pl-8 font-body text-lg leading-relaxed text-[#202522] marker:text-[#202522] md:text-xl">
+              <ul className="mt-6 list-disc space-y-4 pl-6 font-body text-base leading-relaxed text-[#202522] marker:text-[#202522] sm:mt-8 sm:pl-8 sm:text-lg md:text-xl">
                 <li>
                   How might we help postpartum mothers receive help without
                   needing to coordinate everything themselves?
@@ -983,11 +949,11 @@ export default function NurtureNestPage() {
             </div>
 
             <div className="mt-20">
-              <h3 className="ml-[95px] font-headline text-[clamp(2rem,3vw,3rem)] font-semibold tracking-[-0.04em] text-[#202522]">
+              <h3 className="font-headline text-[clamp(2rem,3vw,3rem)] font-semibold tracking-[-0.04em] text-[#202522] sm:ml-[95px]">
                 Site Map
               </h3>
 
-              <div className="mt-12 bg-[#FFFFFF] p-6 md:p-8">
+              <div className="mt-8 bg-[#FFFFFF] p-3 sm:mt-12 sm:p-6 md:p-8">
                 <Image
                   alt="Nurture Nest site map"
                   className="mx-auto h-auto w-full max-w-4xl object-contain"
@@ -1003,7 +969,7 @@ export default function NurtureNestPage() {
                 Low Fidelity <span className="text-[#74b58b]">Wireframes</span>
               </h3>
 
-              <div className="-mx-8 mt-12 bg-[#FFFFFF]">
+              <div className="mt-8 bg-[#FFFFFF] sm:-mx-8 sm:mt-12">
                 <Image
                   alt="Nurture Nest low fidelity wireframes"
                   className="h-auto w-full object-contain"
@@ -1021,7 +987,7 @@ export default function NurtureNestPage() {
             Typography & <span className="text-[#74b58b]">Colors</span>
           </h2>
 
-          <div className="mt-14 grid gap-12 lg:grid-cols-2">
+          <div className="mt-10 grid gap-10 sm:mt-14 sm:gap-12 lg:grid-cols-2">
             <div className="space-y-6">
               <h3 className="font-headline text-[clamp(1.8rem,2.6vw,2.6rem)] font-medium text-[#202522]">
                 Primary Font
@@ -1031,13 +997,13 @@ export default function NurtureNestPage() {
               >
                 Nunito
               </div>
-              <p className="font-body text-xl tracking-[0.06em] text-[#141615]">
+              <p className="font-body text-base tracking-[0.04em] text-[#141615] sm:text-xl sm:tracking-[0.06em]">
                 ABCDEFGHIJKLMNOPQRSTUVWXYZ
               </p>
-              <p className="font-body text-xl text-[#141615]">
+              <p className="font-body text-base text-[#141615] sm:text-xl">
                 abcdefghijklmnopqrstuvwxyz
               </p>
-              <p className="font-body text-xl text-[#141615]">1234567890</p>
+              <p className="font-body text-base text-[#141615] sm:text-xl">1234567890</p>
             </div>
 
             <div className="space-y-6">
@@ -1049,19 +1015,19 @@ export default function NurtureNestPage() {
               >
                 Caveat
               </div>
-              <p className={`${caveat.className} text-xl text-[#141615]`}>
+              <p className={`${caveat.className} text-base text-[#141615] sm:text-xl`}>
                 ABCDEFGHIJKLMNOPQRSTUVWXYZ
               </p>
-              <p className={`${caveat.className} text-xl text-[#141615]`}>
+              <p className={`${caveat.className} text-base text-[#141615] sm:text-xl`}>
                 abcdefghijklmnopqrstuvwxyz
               </p>
-              <p className={`${caveat.className} text-xl text-[#141615]`}>
+              <p className={`${caveat.className} text-base text-[#141615] sm:text-xl`}>
                 1234567890
               </p>
             </div>
           </div>
 
-          <div className="mt-16 grid gap-x-8 gap-y-12 md:grid-cols-3 xl:grid-cols-5">
+          <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 sm:mt-16 sm:gap-x-8 sm:gap-y-12 md:grid-cols-3 xl:grid-cols-5">
             {[
               { label: "Primary", value: "#69CE99", color: "#69CE99" },
               { label: "Red", value: "#F66D6D", color: "#F66D6D" },
@@ -1086,10 +1052,10 @@ export default function NurtureNestPage() {
                   }`}
                   style={{ backgroundColor: swatch.color }}
                 />
-                <p className="mt-5 font-body text-xl text-[#3E4341]">
+                <p className="mt-4 font-body text-base text-[#3E4341] sm:mt-5 sm:text-xl">
                   {swatch.label}
                 </p>
-                <p className="mt-2 font-body text-xl text-[#3E4341]">
+                <p className="mt-1 font-body text-sm text-[#3E4341] sm:mt-2 sm:text-xl">
                   {swatch.value}
                 </p>
               </div>
@@ -1097,12 +1063,12 @@ export default function NurtureNestPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-[1920px] px-8 pb-36">
+        <section className="mx-auto max-w-[1920px] px-6 pb-20 sm:px-8 sm:pb-36">
           <h2 className="text-center font-headline text-[clamp(2.4rem,4vw,4rem)] font-semibold tracking-[-0.05em] text-[#202522]">
             Visual <span className="text-[#74b58b]">Design</span>
           </h2>
 
-          <div className="mt-12 bg-[#FFFFFF] p-6 md:p-8">
+          <div className="mt-8 bg-[#FFFFFF] p-3 sm:mt-12 sm:p-6 md:p-8">
             <Image
               alt="Nurture Nest visual design breakdown"
               className="h-auto w-full object-contain"
@@ -1113,8 +1079,8 @@ export default function NurtureNestPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-[1920px] pb-36">
-          <div className="-mx-4 bg-[#EDFCF3] py-10 md:py-14">
+        <section className="mx-auto max-w-[1920px] pb-20 sm:pb-36">
+          <div className="bg-[#EDFCF3] py-8 sm:-mx-4 sm:py-10 md:py-14">
             <Image
               alt="Nurture Nest app collage"
               className="mx-auto h-auto w-[85%] object-contain"
@@ -1125,13 +1091,13 @@ export default function NurtureNestPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-8 pb-28">
-          <div className="rounded-[2rem] bg-[#EDFCF3] px-10 py-12 md:px-14 md:py-14">
+        <section className="mx-auto max-w-7xl px-6 pb-20 sm:px-8 sm:pb-28">
+          <div className="rounded-[2rem] bg-[#EDFCF3] px-6 py-8 sm:px-10 sm:py-12 md:px-14 md:py-14">
             <h2 className="font-headline text-[clamp(2rem,3vw,3rem)] font-medium tracking-[-0.04em] text-[#74b58b]">
               Reflection
             </h2>
 
-            <div className="mt-8 space-y-8 font-body text-lg leading-relaxed text-[#202522] md:text-xl">
+            <div className="mt-6 space-y-6 font-body text-base leading-relaxed text-[#202522] sm:mt-8 sm:space-y-8 sm:text-lg md:text-xl">
               <p>
                 One feature I am particularly proud of is the support task
                 list, which allows mothers to easily share specific ways others
@@ -1158,12 +1124,12 @@ export default function NurtureNestPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-5xl px-8 pb-36 text-center">
+        <section className="mx-auto max-w-5xl px-6 pb-24 text-center sm:px-8 sm:pb-36">
           <p className="font-body text-[clamp(1.8rem,3vw,2.6rem)] leading-snug text-[#202522]">
             Thank you for taking the time to review this case study.
           </p>
           <a
-            className="mt-8 inline-flex rounded-md bg-[linear-gradient(135deg,#69CE99_0%,#66C97A_100%)] px-8 py-4 font-label text-sm font-bold uppercase tracking-widest !text-white"
+            className="mt-8 inline-flex w-full items-center justify-center rounded-md bg-[linear-gradient(135deg,#69CE99_0%,#66C97A_100%)] px-8 py-4 text-center font-label text-xs font-bold uppercase tracking-[0.18em] !text-white sm:w-auto sm:text-sm sm:tracking-widest"
             href="https://www.figma.com/design/9aXKlzwsyZLhko603rPKIn/Nurture-Nest-Mobile-App?node-id=355-3364&t=KxnbVjJaeVXdnwSF-1"
             rel="noreferrer"
             target="_blank"
@@ -1173,9 +1139,9 @@ export default function NurtureNestPage() {
         </section>
       </main>
 
-      <footer className="w-full bg-surface-container-low px-12 py-20">
+      <footer className="w-full bg-surface-container-low px-6 py-14 sm:px-12 sm:py-20">
         <div className="mx-auto flex w-full max-w-[1920px] justify-center">
-          <p className="text-center font-label text-[0.75rem] uppercase tracking-[0.1em] text-on-surface-variant/60">
+          <p className="text-center font-label text-[0.65rem] uppercase tracking-[0.1em] text-on-surface-variant/60 sm:text-[0.75rem]">
             © 2026 designed and developed by jaden cook
           </p>
         </div>

@@ -4,6 +4,7 @@ import Image from "next/image";
 import type { FormEvent } from "react";
 import { useEffect, useState } from "react";
 import { GalleryCursor } from "@/components/gallery-cursor";
+import { SiteNav } from "@/components/site-nav";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 const featuredProjects = [
@@ -18,8 +19,9 @@ const featuredProjects = [
     image: "/nurturenest.png",
     alt: "Nurturenest project preview",
     reverse: false,
-    imageClassName: "h-[600px] w-[600px] max-w-full object-cover mx-auto",
-    imageStyle: { objectPosition: "center 200%" },
+    imageClassName:
+      "h-[320px] w-full max-w-[42rem] object-contain mx-auto sm:h-[460px] md:h-[560px]",
+    imageStyle: { objectPosition: "center center" },
   },
   {
     title: "THE CHRONICLE",
@@ -99,11 +101,6 @@ export default function Home() {
     };
   }, []);
 
-  const navLinkClass = (isActive: boolean) =>
-    isActive
-      ? "border-b-2 border-primary pb-1 font-headline text-sm font-bold uppercase tracking-[-0.04em] text-primary"
-      : "font-headline text-sm font-bold uppercase tracking-[-0.04em] text-nav-muted transition-colors duration-300 hover:text-primary";
-
   const handleContactSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -139,50 +136,27 @@ export default function Home() {
     <>
       <GalleryCursor />
       <ThemeToggle />
-      <header className="fixed top-0 z-50 w-full bg-[color:var(--header-bg)] shadow-[var(--section-shadow)] backdrop-blur-xl">
-        <nav className="mx-auto flex w-full max-w-[1920px] items-center justify-between px-6 py-6 sm:px-12 sm:py-8">
-          <div className="font-headline text-[1.45rem] font-black lowercase tracking-[-0.05em] text-heading italic">
-            <span className="text-heading">jaden</span>
-            <span className="inline-block bg-[linear-gradient(90deg,#d7deff_0%,#9dacff_58%,#6f86ff_100%)] bg-clip-text pr-[1.06em] text-transparent">
-              cook.design
-            </span>
-          </div>
-          <div className="hidden items-center gap-12 md:flex">
-            <a
-              className={navLinkClass(activeSection === "home")}
-              href="#"
-            >
-              HOME
-            </a>
-            <a
-              className={navLinkClass(activeSection === "projects")}
-              href="#work"
-            >
-              PROJECTS
-            </a>
-            <a
-              className={navLinkClass(activeSection === "contact")}
-              href="#contact"
-            >
-              CONTACT
-            </a>
-          </div>
-          <button
-            aria-label="Open navigation"
-            className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 text-primary md:hidden"
-            type="button"
-          >
-            <span className="block h-0.5 w-5 bg-current" />
-            <span className="block h-0.5 w-5 bg-current" />
-            <span className="block h-0.5 w-5 bg-current" />
-          </button>
-        </nav>
-      </header>
+      <SiteNav
+        headerClassName="fixed top-0 z-50 w-full bg-[color:var(--header-bg)] shadow-[var(--section-shadow)] backdrop-blur-xl"
+        items={[
+          { label: "HOME", href: "#", active: activeSection === "home" },
+          {
+            label: "PROJECTS",
+            href: "#work",
+            active: activeSection === "projects",
+          },
+          {
+            label: "CONTACT",
+            href: "#contact",
+            active: activeSection === "contact",
+          },
+        ]}
+      />
 
-      <main className="pt-10 sm:pt-14">
-        <section className="mx-auto mb-24 flex min-h-[819px] max-w-[1920px] flex-col justify-center px-6 sm:px-12 md:px-24">
+      <main className="pt-8 sm:pt-14">
+        <section className="mx-auto mb-12 flex min-h-[calc(100svh-4rem)] max-w-[1920px] flex-col justify-center px-6 pt-20 sm:mb-16 sm:px-12 md:min-h-[819px] md:px-24">
           <div className="mx-auto max-w-4xl text-center">
-            <h1 className="mb-8 font-headline text-[clamp(2.8rem,7vw,5.8rem)] font-bold leading-[1.04] tracking-[-0.04em] text-heading">
+            <h1 className="mb-6 font-headline text-[clamp(2.45rem,10vw,5.8rem)] font-bold leading-[1.02] tracking-[-0.04em] text-heading sm:mb-8">
               <span className="block text-[0.76em] font-medium text-heading/90">
                 Hi, I&apos;m
               </span>
@@ -190,13 +164,13 @@ export default function Home() {
                 Jaden Cook
               </span>
             </h1>
-            <p className="mx-auto mb-12 max-w-2xl font-body text-2xl leading-relaxed text-on-surface-variant">
+            <p className="mx-auto mb-10 max-w-2xl font-body text-lg leading-relaxed text-on-surface-variant sm:mb-12 sm:text-xl md:text-2xl">
               I&apos;m a UI/UX designer with a front-end background, focused on
               creating clean, intuitive digital experiences.
             </p>
-            <div className="flex justify-center gap-6">
+            <div className="flex justify-center gap-4 sm:gap-6">
               <a
-                className="rounded-md bg-[linear-gradient(135deg,var(--primary)_0%,var(--primary-strong)_100%)] px-8 py-4 font-label text-sm font-bold uppercase tracking-widest !text-[color:var(--button-text)] transition-transform duration-300 hover:scale-105"
+                className="rounded-md bg-[linear-gradient(135deg,var(--primary)_0%,var(--primary-strong)_100%)] px-6 py-4 text-center font-label text-xs font-bold uppercase tracking-[0.18em] !text-[color:var(--button-text)] transition-transform duration-300 hover:scale-105 sm:px-8 sm:text-sm sm:tracking-widest"
                 href="https://www.jadencook.design/_files/ugd/eeef39_3e736baecd1f465493ddda2e6947c04a.pdf"
                 rel="noreferrer"
                 target="_blank"
@@ -259,7 +233,7 @@ export default function Home() {
                       {project.year}
                     </span>
                   </div>
-                  <h3 className="font-headline text-4xl font-bold tracking-tight">
+                  <h3 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">
                     {project.title}
                   </h3>
                   <p className="font-body leading-relaxed text-on-surface-variant">
@@ -297,7 +271,7 @@ export default function Home() {
                   href={project.href}
                   rel={project.href.startsWith("http") ? "noreferrer" : undefined}
                   target={project.href.startsWith("http") ? "_blank" : undefined}
-                  className="group flex aspect-square flex-col justify-between rounded-lg bg-surface-container p-8 transition-colors duration-300 hover:bg-surface-container-high"
+                  className="group flex min-h-72 flex-col justify-between rounded-lg bg-surface-container p-6 transition-colors duration-300 hover:bg-surface-container-high sm:aspect-square sm:p-8"
                 >
                   <div>
                     <span className="mb-4 block font-label text-[10px] uppercase tracking-widest text-primary">
@@ -310,8 +284,21 @@ export default function Home() {
                       {project.description}
                     </p>
                   </div>
-                  <div className="flex justify-end font-headline text-xl text-primary">
-                    ↗
+                  <div className="flex justify-end text-primary">
+                    <svg
+                      aria-hidden="true"
+                      className="h-5 w-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M7 17L17 7M9 7H17V15"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                      />
+                    </svg>
                   </div>
                 </a>
               ))}
@@ -330,7 +317,7 @@ export default function Home() {
                 <br />
                 Connect
               </h2>
-              <p className="mt-10 max-w-md font-body text-xl leading-[1.7] text-on-surface-variant">
+              <p className="mt-8 max-w-md font-body text-lg leading-[1.7] text-on-surface-variant sm:mt-10 sm:text-xl">
                 Interested in working together or just want to say hi? Feel
                 free to reach out. I&apos;m currently available for new
                 projects and collaborations.
@@ -353,7 +340,7 @@ export default function Home() {
                   Name
                 </span>
                 <input
-                  className="border border-[color:var(--button-border)] bg-transparent px-4 py-5 font-body text-xl text-foreground outline-none transition-colors placeholder:text-on-surface-variant/60 focus:border-primary"
+                  className="border border-[color:var(--button-border)] bg-transparent px-4 py-4 font-body text-lg text-foreground outline-none transition-colors placeholder:text-on-surface-variant/60 focus:border-primary sm:py-5 sm:text-xl"
                   name="name"
                   placeholder="John Doe"
                   required
@@ -366,7 +353,7 @@ export default function Home() {
                   Email
                 </span>
                 <input
-                  className="border border-[color:var(--button-border)] bg-transparent px-4 py-5 font-body text-xl text-foreground outline-none transition-colors placeholder:text-on-surface-variant/60 focus:border-primary"
+                  className="border border-[color:var(--button-border)] bg-transparent px-4 py-4 font-body text-lg text-foreground outline-none transition-colors placeholder:text-on-surface-variant/60 focus:border-primary sm:py-5 sm:text-xl"
                   name="email"
                   placeholder="john@example.com"
                   required
@@ -379,7 +366,7 @@ export default function Home() {
                   Message
                 </span>
                 <textarea
-                  className="min-h-32 border border-[color:var(--button-border)] bg-transparent px-4 py-5 font-body text-xl text-foreground outline-none transition-colors placeholder:text-on-surface-variant/60 focus:border-primary"
+                  className="min-h-32 border border-[color:var(--button-border)] bg-transparent px-4 py-4 font-body text-lg text-foreground outline-none transition-colors placeholder:text-on-surface-variant/60 focus:border-primary sm:py-5 sm:text-xl"
                   name="message"
                   placeholder="Say hello..."
                   required
@@ -388,7 +375,7 @@ export default function Home() {
 
               <div className="pt-2">
                 <button
-                  className="rounded-md bg-[linear-gradient(135deg,var(--primary)_0%,var(--primary-strong)_100%)] px-12 py-5 font-label text-sm font-bold uppercase tracking-[0.2em] !text-[color:var(--button-text)] transition-transform duration-300 hover:scale-105"
+                  className="w-full rounded-md bg-[linear-gradient(135deg,var(--primary)_0%,var(--primary-strong)_100%)] px-8 py-4 font-label text-xs font-bold uppercase tracking-[0.2em] !text-[color:var(--button-text)] transition-transform duration-300 hover:scale-105 sm:w-auto sm:px-12 sm:py-5 sm:text-sm"
                   disabled={isSubmitting}
                   type="submit"
                 >

@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { GalleryCursor } from "@/components/gallery-cursor";
+import { SiteNav } from "@/components/site-nav";
 
 const tags = ["Fintech", "UX/UI Design"];
 const solutionPoints = [
@@ -38,51 +38,19 @@ export default function TributaxPage() {
       className="dark:[--background:#171b22] dark:[--foreground:#e8edf5] dark:[--primary:#72a6ff] dark:[--primary-strong:#a7c6ff] dark:[--surface-container-low:#1e232c] dark:[--surface-container:#252b35] dark:[--surface-container-high:#2d3440] dark:[--surface-container-highest:#384253] dark:[--surface-outline:#475264] dark:[--text-muted:#afbac8] dark:[--heading:#f5f8fd] dark:[--nav-muted:#919cab] dark:[--header-bg:rgba(23,27,34,0.72)] dark:[--button-text:#101826] dark:[--button-surface:rgba(37,43,53,0.92)] dark:[--button-border:rgba(114,166,255,0.18)] dark:[--button-icon:#e8edf5] dark:[--section-shadow:0_40px_40px_-15px_rgba(114,166,255,0.08)]"
     >
       <GalleryCursor />
-      <nav className="fixed left-0 right-0 top-0 z-50 bg-background/60 backdrop-blur-xl">
-        <div className="mx-auto flex w-full max-w-[1920px] items-center justify-between px-8 py-6">
-          <Link
-            className="font-headline text-[1.45rem] font-black lowercase tracking-[-0.05em] text-heading italic"
-            href="/"
-          >
-            <span className="text-white">jaden</span>
-            <span className="inline-block bg-[linear-gradient(90deg,#d9e8ff_0%,#85adff_58%,#4e7dff_100%)] bg-clip-text pr-[1.06em] text-transparent">
-              cook.design
-            </span>
-          </Link>
-          <div className="hidden gap-12 md:flex">
-            <Link
-              className="font-headline text-sm font-bold uppercase tracking-[-0.04em] text-nav-muted transition-colors hover:text-heading"
-              href="/"
-            >
-              Home
-            </Link>
-            <Link
-              className="border-b-2 border-primary pb-1 font-headline text-sm font-bold uppercase tracking-[-0.04em] text-primary"
-              href="/#work"
-            >
-              Projects
-            </Link>
-            <Link
-              className="font-headline text-sm font-bold uppercase tracking-[-0.04em] text-nav-muted transition-colors hover:text-heading"
-              href="/#contact"
-            >
-              Contact
-            </Link>
-          </div>
-          <button
-            aria-label="Open navigation"
-            className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 text-primary md:hidden"
-            type="button"
-          >
-            <span className="block h-0.5 w-5 bg-current" />
-            <span className="block h-0.5 w-5 bg-current" />
-            <span className="block h-0.5 w-5 bg-current" />
-          </button>
-        </div>
-      </nav>
+      <SiteNav
+        brandAccentClassName="inline-block bg-[linear-gradient(90deg,#d9e8ff_0%,#85adff_58%,#4e7dff_100%)] bg-clip-text pr-[1.06em] text-transparent"
+        brandLeadClassName="text-white"
+        containerClassName="mx-auto flex w-full max-w-[1920px] items-center justify-between px-6 py-6 sm:px-8 sm:py-6"
+        items={[
+          { label: "HOME", href: "/" },
+          { label: "PROJECTS", href: "/#work", active: true },
+          { label: "CONTACT", href: "/#contact" },
+        ]}
+      />
 
       <main className="bg-background text-foreground">
-        <section className="relative flex min-h-[700px] items-end overflow-hidden pt-32 md:h-[921px]">
+        <section className="relative flex min-h-[34rem] items-end overflow-hidden pt-28 md:h-[921px]">
           <div className="absolute inset-0">
             <Image
               alt="Tributax App Interface Close-up"
@@ -94,22 +62,22 @@ export default function TributaxPage() {
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,#0b142314_0%,#0b14232e_20%,var(--background)_100%)] dark:bg-[linear-gradient(180deg,#03060c2e_0%,#03060c52_20%,var(--background)_100%)]" />
           </div>
-          <div className="relative z-10 mx-auto w-full max-w-[1920px] px-8 pb-20">
-            <span className="mb-4 block font-label text-sm uppercase tracking-[0.2em] text-primary">
+          <div className="relative z-10 mx-auto w-full max-w-[1920px] px-6 pb-14 sm:px-8 sm:pb-20">
+            <span className="mb-4 block font-label text-xs uppercase tracking-[0.2em] text-primary sm:text-sm">
               Redesign / 2024
             </span>
-            <h1 className="font-headline text-[12vw] font-black leading-[0.85] tracking-[-0.06em] text-heading md:text-[10rem]">
+            <h1 className="font-headline text-[clamp(3.8rem,17vw,10rem)] font-black leading-[0.88] tracking-[-0.06em] text-heading">
               TRIBUTAX
             </h1>
             <div className="mt-8 flex flex-col justify-between gap-8 md:flex-row md:items-center">
-              <p className="font-headline text-2xl font-medium tracking-tight text-on-surface-variant md:text-4xl">
+              <p className="max-w-3xl font-headline text-xl font-medium tracking-tight text-on-surface-variant sm:text-2xl md:text-4xl">
                 App Redesign for the Guatemalan Tax Ecosystem
               </p>
-              <div className="flex gap-4">
+              <div className="flex flex-wrap gap-3 sm:gap-4">
                 {tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-sm bg-surface-container-highest px-4 py-2 font-label text-[0.65rem] uppercase tracking-widest"
+                    className="rounded-sm bg-surface-container-highest px-3 py-2 font-label text-[0.6rem] uppercase tracking-widest sm:px-4 sm:text-[0.65rem]"
                   >
                     {tag}
                   </span>
@@ -119,16 +87,16 @@ export default function TributaxPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-[1920px] px-8 pb-14 pt-32">
+        <section className="mx-auto max-w-[1920px] px-6 pb-10 pt-20 sm:px-8 sm:pb-14 sm:pt-32">
           <div className="grid grid-cols-1 gap-16 md:grid-cols-12">
             <div className="md:col-span-5">
-              <h2 className="font-headline text-4xl font-bold leading-tight tracking-tighter md:text-5xl">
+              <h2 className="font-headline text-3xl font-bold leading-tight tracking-tighter sm:text-4xl md:text-5xl">
                 Pioneering digital tax solutions in{" "}
                 <span className="italic text-primary">Central America.</span>
               </h2>
             </div>
             <div className="md:col-span-6 md:col-start-7">
-              <p className="mb-12 font-body text-xl leading-relaxed text-on-surface-variant md:text-2xl">
+              <p className="mb-12 font-body text-lg leading-relaxed text-on-surface-variant sm:text-xl md:text-2xl">
                 Tributax is the first tax app tailored to Guatemala&apos;s
                 unique tax system. Rooted in a collaborative effort between the
                 CEO, the lead frontend developer, and myself, this project aims
@@ -142,14 +110,14 @@ export default function TributaxPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-[1920px] px-8 pb-32 pt-14">
+        <section className="mx-auto max-w-[1920px] px-6 pb-20 pt-8 sm:px-8 sm:pb-32 sm:pt-14">
           <div className="grid grid-cols-1 items-start gap-24 md:grid-cols-2">
             <div className="flex flex-col gap-12">
-              <div className="rounded-xl border border-primary/15 border-l-4 bg-surface-container p-12 shadow-[var(--section-shadow)]">
+              <div className="rounded-xl border border-primary/15 border-l-4 bg-surface-container p-8 shadow-[var(--section-shadow)] sm:p-12">
                 <h3 className="mb-6 font-label text-xs uppercase tracking-widest text-primary">
                   The Challenge
                 </h3>
-                <h4 className="mb-6 font-headline text-3xl font-bold">
+                <h4 className="mb-6 font-headline text-2xl font-bold sm:text-3xl">
                   A Fragmented App Experience
                 </h4>
                 <p className="leading-relaxed text-on-surface-variant">
@@ -163,7 +131,7 @@ export default function TributaxPage() {
               </div>
               <Image
                 alt="Tributax redesign screenshot"
-                className="h-[calc(var(--spacing)*90)] w-full rounded-xl border border-primary/10 object-cover grayscale transition-all duration-700 hover:grayscale-0"
+                className="h-[26rem] w-full rounded-xl border border-primary/10 object-cover grayscale transition-all duration-700 hover:grayscale-0 sm:h-[calc(var(--spacing)*90)]"
                 height={800}
                 src="/newgroup12.png"
                 width={1200}
@@ -174,10 +142,10 @@ export default function TributaxPage() {
                 <h3 className="font-label text-xs uppercase tracking-widest text-primary">
                   The Solution
                 </h3>
-                <h4 className="font-headline text-5xl font-black leading-[0.9] tracking-tight">
+                <h4 className="font-headline text-4xl font-black leading-[0.9] tracking-tight sm:text-5xl">
                   Clarity Through Design
                 </h4>
-                <p className="text-xl leading-relaxed text-on-surface-variant">
+                <p className="text-lg leading-relaxed text-on-surface-variant sm:text-xl">
                   The redesign focused on improving clarity and usability
                   through a cleaner, more modern interface. The sidebar was
                   simplified, and the homepage layout was refined to prioritize
@@ -204,7 +172,7 @@ export default function TributaxPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-[1920px] px-8 py-20">
+        <section className="mx-auto max-w-[1920px] px-6 py-14 sm:px-8 sm:py-20">
           <div className="overflow-hidden rounded-lg border border-primary/10 bg-surface-container shadow-[var(--section-shadow)]">
             <Image
               alt="Tributax collage"
@@ -216,9 +184,9 @@ export default function TributaxPage() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-4xl px-8 py-40 text-center">
+        <section className="mx-auto max-w-4xl px-6 py-24 text-center sm:px-8 sm:py-40">
           <div className="mb-8 text-5xl text-primary">“</div>
-          <blockquote className="font-headline text-3xl font-bold leading-tight tracking-tight md:text-5xl">
+          <blockquote className="font-headline text-2xl font-bold leading-tight tracking-tight sm:text-3xl md:text-5xl">
             It finally feels like a real product, polished, intuitive, and
             something users can actually trust and navigate with confidence.
           </blockquote>
