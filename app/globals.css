@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f6f1ea;
+  --foreground: #181715;
+  --primary: #3153dd;
+  --primary-strong: #1234b8;
+  --surface-container-low: #ece5dc;
+  --surface-container: #fdfaf5;
+  --surface-container-high: #f3ece3;
+  --surface-container-highest: #e7dfd4;
+  --surface-outline: #c7bdb1;
+  --text-muted: #5f5b55;
+  --heading: #0f0f0e;
+  --nav-muted: #8a837b;
+  --header-bg: rgba(246, 241, 234, 0.72);
+  --button-text: #ffffff;
+  --button-surface: rgba(253, 250, 245, 0.92);
+  --button-border: rgba(24, 23, 21, 0.1);
+  --button-icon: #181715;
+  --section-shadow: 0 32px 60px -24px rgba(10, 24, 88, 0.12);
+}
+
+html.dark,
+html[data-theme="dark"] {
+  --background: #131313;
+  --foreground: #e5e2e1;
+  --primary: #b8c3ff;
+  --primary-strong: #4e71ff;
+  --surface-container-low: #1c1b1b;
+  --surface-container: #201f1f;
+  --surface-container-high: #2a2a2a;
+  --surface-container-highest: #353534;
+  --surface-outline: #444748;
+  --text-muted: #c4c7c7;
+  --heading: #ffffff;
+  --nav-muted: #7f7f80;
+  --header-bg: rgba(19, 19, 19, 0.6);
+  --button-text: #002388;
+  --button-surface: rgba(32, 31, 31, 0.9);
+  --button-border: rgba(184, 195, 255, 0.16);
+  --button-icon: #e5e2e1;
+  --section-shadow: 0 40px 40px -15px rgba(184, 195, 255, 0.06);
+}
+
+html.light,
+html[data-theme="light"] {
+  --background: #f6f1ea;
+  --foreground: #181715;
+  --primary: #3153dd;
+  --primary-strong: #1234b8;
+  --surface-container-low: #ece5dc;
+  --surface-container: #fdfaf5;
+  --surface-container-high: #f3ece3;
+  --surface-container-highest: #e7dfd4;
+  --surface-outline: #c7bdb1;
+  --text-muted: #5f5b55;
+  --heading: #0f0f0e;
+  --nav-muted: #8a837b;
+  --header-bg: rgba(246, 241, 234, 0.72);
+  --button-text: #ffffff;
+  --button-surface: rgba(253, 250, 245, 0.92);
+  --button-border: rgba(24, 23, 21, 0.1);
+  --button-icon: #181715;
+  --section-shadow: 0 32px 60px -24px rgba(10, 24, 88, 0.12);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-strong: var(--primary-strong);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-surface-container-highest: var(--surface-container-highest);
+  --color-outline-variant: var(--surface-outline);
+  --color-on-surface-variant: var(--text-muted);
+  --color-heading: var(--heading);
+  --color-nav-muted: var(--nav-muted);
+  --font-sans: var(--font-body);
+  --font-headline: var(--font-headline);
+  --font-body: var(--font-body);
+  --font-label: var(--font-label);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), sans-serif;
+  text-rendering: optimizeLegibility;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: none;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.h-80 {
+  height: calc(var(--spacing) * 90);
+}
