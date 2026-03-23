@@ -25,7 +25,7 @@
 *.pem
 .favicon_tmp/
 favicon_io.zip
-newgroup12.png
+/newgroup12.png
 
 # debug
 npm-debug.log*
