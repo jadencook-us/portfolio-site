@@ -107,8 +107,8 @@ export function SiteNav({
                   key={item.label}
                   className={`rounded-2xl border px-5 py-4 font-headline text-2xl font-bold uppercase tracking-[-0.04em] transition-colors ${
                     item.active
-                      ? "border-primary bg-primary/8 text-primary"
-                      : "border-[color:var(--button-border)] bg-[color:var(--button-surface)] text-heading"
+                      ? "border-primary bg-surface-container text-primary"
+                      : "border-[color:var(--button-border)] bg-surface-container-high text-heading"
                   }`}
                   href={item.href}
                   onClick={closeMenu}
