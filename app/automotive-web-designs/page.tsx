@@ -118,13 +118,22 @@ export default function AutomotiveWebDesignsPage() {
             <div className="grid grid-cols-1 gap-8 border-t border-outline-variant/20 pt-10 sm:pt-16 md:grid-cols-3">
               {goals.map((goal) => (
                 <motion.div {...itemReveal} key={goal.title} className="group">
-                  <span className="mb-4 block font-label text-[10px] tracking-[0.2em] text-[#9aa4b7]">
+                  <span
+                    key={`${goal.title}-label`}
+                    className="mb-4 block font-label text-[10px] tracking-[0.2em] text-[#9aa4b7]"
+                  >
                     {goal.label}
                   </span>
-                  <h3 className="mb-4 font-headline text-2xl font-bold">
+                  <h3
+                    key={`${goal.title}-heading`}
+                    className="mb-4 font-headline text-2xl font-bold"
+                  >
                     {goal.title}
                   </h3>
-                  <p className="font-body text-sm leading-relaxed text-on-surface-variant opacity-60 transition-opacity group-hover:opacity-100">
+                  <p
+                    key={`${goal.title}-description`}
+                    className="font-body text-sm leading-relaxed text-on-surface-variant opacity-60 transition-opacity group-hover:opacity-100"
+                  >
                     {goal.description}
                   </p>
                 </motion.div>
@@ -138,15 +147,22 @@ export default function AutomotiveWebDesignsPage() {
           className="relative mb-24 overflow-hidden sm:mb-48"
         >
           <div className="flex min-h-[auto] flex-col items-stretch md:min-h-[819px] md:flex-row">
-            <motion.div {...itemReveal} className="group relative w-full md:w-3/5">
+            <motion.div
+              {...itemReveal}
+              className="group relative w-full md:w-3/5"
+            >
               <Image
+                key="mitsubishi-image"
                 alt="Mitsubishi homepage design preview"
                 className="h-[22rem] w-full object-cover grayscale transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:grayscale-0 sm:h-[28rem] md:h-full"
                 height={1600}
                 src="/mitsubishi.png"
                 width={2200}
               />
-              <div className="absolute inset-0 hidden bg-gradient-to-r from-background to-transparent md:block" />
+              <div
+                key="mitsubishi-overlay"
+                className="absolute inset-0 hidden bg-gradient-to-r from-background to-transparent md:block"
+              />
             </motion.div>
             <motion.div
               {...itemReveal}
@@ -187,7 +203,10 @@ export default function AutomotiveWebDesignsPage() {
         >
           <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 sm:gap-24 md:flex-row-reverse">
             <motion.div {...itemReveal} className="w-full md:w-1/2">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-surface-container-high shadow-2xl">
+              <div
+                key="chevrolet-frame"
+                className="relative aspect-[4/5] overflow-hidden rounded-xl bg-surface-container-high shadow-2xl"
+              >
                 <Image
                   alt="Chevrolet homepage design preview"
                   className="h-full w-full object-cover opacity-80 transition-opacity duration-500 hover:opacity-100"
@@ -229,15 +248,22 @@ export default function AutomotiveWebDesignsPage() {
           className="relative mb-28 overflow-hidden sm:mb-64"
         >
           <div className="flex min-h-[auto] flex-col items-stretch md:min-h-[819px] md:flex-row">
-            <motion.div {...itemReveal} className="group relative w-full md:w-3/5">
+            <motion.div
+              {...itemReveal}
+              className="group relative w-full md:w-3/5"
+            >
               <Image
+                key="lexus-image"
                 alt="Lexus homepage design preview"
                 className="h-[22rem] w-full object-cover grayscale transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:grayscale-0 sm:h-[28rem] md:h-full"
                 height={1600}
                 src="/lexus1.png"
                 width={2200}
               />
-              <div className="absolute inset-0 hidden bg-gradient-to-r from-background to-transparent md:block" />
+              <div
+                key="lexus-overlay"
+                className="absolute inset-0 hidden bg-gradient-to-r from-background to-transparent md:block"
+              />
             </motion.div>
             <motion.div
               {...itemReveal}
