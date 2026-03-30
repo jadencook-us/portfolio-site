@@ -131,7 +131,7 @@ export default function TributaxPage() {
               </div>
               <Image
                 alt="Tributax redesign screenshot"
-                className="h-[26rem] w-full rounded-xl border border-primary/10 object-cover grayscale transition-all duration-700 hover:grayscale-0 sm:h-[calc(var(--spacing)*90)]"
+                className="h-[26rem] w-full rounded-xl border border-primary/10 object-cover sm:h-[calc(var(--spacing)*90)]"
                 height={800}
                 src="/newgroup12.png"
                 width={1200}
@@ -167,6 +167,14 @@ export default function TributaxPage() {
                     </li>
                   ))}
                 </ul>
+                <a
+                  className="inline-flex w-full items-center justify-center rounded-md bg-[linear-gradient(135deg,var(--primary)_0%,var(--primary-strong)_100%)] px-8 py-4 text-center font-label text-xs font-bold uppercase tracking-[0.18em] !text-[color:var(--button-text)] shadow-lg shadow-primary/15 sm:w-fit"
+                  href="https://apps.apple.com/us/app/tributax/id1615292720"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  View Live App
+                </a>
               </div>
             </div>
           </div>
