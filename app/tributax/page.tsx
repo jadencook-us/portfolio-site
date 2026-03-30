@@ -1,3 +1,6 @@
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
 import type { CSSProperties } from "react";
 import Image from "next/image";
 import { GalleryCursor } from "@/components/gallery-cursor";
@@ -11,6 +14,32 @@ const solutionPoints = [
 ];
 
 export default function TributaxPage() {
+  const prefersReducedMotion = useReducedMotion();
+
+  const sectionReveal = prefersReducedMotion
+    ? {}
+    : {
+        initial: { opacity: 0, y: 34 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, amount: 0.18 },
+        transition: {
+          duration: 1.7,
+          ease: [0.23, 1, 0.32, 1] as const,
+        },
+      };
+
+  const itemReveal = prefersReducedMotion
+    ? {}
+    : {
+        initial: { opacity: 0, y: 28 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, amount: 0.16 },
+        transition: {
+          duration: 1.45,
+          ease: [0.23, 1, 0.32, 1] as const,
+        },
+      };
+
   return (
     <div
       style={
@@ -50,7 +79,10 @@ export default function TributaxPage() {
       />
 
       <main className="bg-background text-foreground">
-        <section className="relative flex min-h-[34rem] items-end overflow-hidden pt-28 md:h-[921px]">
+        <motion.section
+          {...sectionReveal}
+          className="relative flex min-h-[34rem] items-end overflow-hidden pt-28 md:h-[921px]"
+        >
           <div className="absolute inset-0">
             <Image
               alt="Tributax App Interface Close-up"
@@ -85,17 +117,20 @@ export default function TributaxPage() {
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
-        <section className="mx-auto max-w-[1920px] px-6 pb-10 pt-20 sm:px-8 sm:pb-14 sm:pt-32">
+        <motion.section
+          {...sectionReveal}
+          className="mx-auto max-w-[1920px] px-6 pb-10 pt-20 sm:px-8 sm:pb-14 sm:pt-32"
+        >
           <div className="grid grid-cols-1 gap-16 md:grid-cols-12">
-            <div className="md:col-span-5">
+            <motion.div {...itemReveal} className="md:col-span-5">
               <h2 className="font-headline text-3xl font-bold leading-tight tracking-tighter sm:text-4xl md:text-5xl">
                 Pioneering digital tax solutions in{" "}
                 <span className="italic text-primary">Central America.</span>
               </h2>
-            </div>
-            <div className="md:col-span-6 md:col-start-7">
+            </motion.div>
+            <motion.div {...itemReveal} className="md:col-span-6 md:col-start-7">
               <p className="mb-12 font-body text-lg leading-relaxed text-on-surface-variant sm:text-xl md:text-2xl">
                 Tributax is the first tax app tailored to Guatemala&apos;s
                 unique tax system. Rooted in a collaborative effort between the
@@ -106,13 +141,16 @@ export default function TributaxPage() {
                 processes, ensuring seamless navigation for users across
                 Guatemala.
               </p>
-            </div>
+            </motion.div>
           </div>
-        </section>
+        </motion.section>
 
-        <section className="mx-auto max-w-[1920px] px-6 pb-20 pt-8 sm:px-8 sm:pb-32 sm:pt-14">
+        <motion.section
+          {...sectionReveal}
+          className="mx-auto max-w-[1920px] px-6 pb-20 pt-8 sm:px-8 sm:pb-32 sm:pt-14"
+        >
           <div className="grid grid-cols-1 items-start gap-24 md:grid-cols-2">
-            <div className="flex flex-col gap-12">
+            <motion.div {...itemReveal} className="flex flex-col gap-12">
               <div className="rounded-xl border border-primary/15 border-l-4 bg-surface-container p-8 shadow-[var(--section-shadow)] sm:p-12">
                 <h3 className="mb-6 font-label text-xs uppercase tracking-widest text-primary">
                   The Challenge
@@ -136,8 +174,8 @@ export default function TributaxPage() {
                 src="/newgroup12.png"
                 width={1200}
               />
-            </div>
-            <div className="flex flex-col gap-12 md:pt-32">
+            </motion.div>
+            <motion.div {...itemReveal} className="flex flex-col gap-12 md:pt-32">
               <div className="space-y-6">
                 <h3 className="font-label text-xs uppercase tracking-widest text-primary">
                   The Solution
@@ -168,7 +206,7 @@ export default function TributaxPage() {
                   ))}
                 </ul>
                 <a
-                  className="inline-flex w-full items-center justify-center rounded-md bg-[linear-gradient(135deg,var(--primary)_0%,var(--primary-strong)_100%)] px-8 py-4 text-center font-label text-xs font-bold uppercase tracking-[0.18em] !text-[color:var(--button-text)] shadow-lg shadow-primary/15 sm:w-fit"
+                  className="inline-flex w-full items-center justify-center rounded-md bg-[linear-gradient(135deg,var(--primary)_0%,var(--primary-strong)_100%)] px-8 py-4 text-center font-label text-xs font-bold uppercase tracking-[0.18em] !text-[color:var(--button-text)] shadow-lg shadow-primary/15 transition-transform duration-300 hover:scale-105 sm:w-fit"
                   href="https://apps.apple.com/us/app/tributax/id1615292720"
                   rel="noreferrer"
                   target="_blank"
@@ -176,12 +214,18 @@ export default function TributaxPage() {
                   View Live App
                 </a>
               </div>
-            </div>
+            </motion.div>
           </div>
-        </section>
+        </motion.section>
 
-        <section className="mx-auto max-w-[1920px] px-6 py-14 sm:px-8 sm:py-20">
-          <div className="overflow-hidden rounded-lg border border-primary/10 bg-surface-container shadow-[var(--section-shadow)]">
+        <motion.section
+          {...sectionReveal}
+          className="mx-auto max-w-[1920px] px-6 py-14 sm:px-8 sm:py-20"
+        >
+          <motion.div
+            {...itemReveal}
+            className="overflow-hidden rounded-lg border border-primary/10 bg-surface-container shadow-[var(--section-shadow)]"
+          >
             <Image
               alt="Tributax collage"
               className="h-auto w-full object-cover"
@@ -189,10 +233,13 @@ export default function TributaxPage() {
               src="/collage.png"
               width={2400}
             />
-          </div>
-        </section>
+          </motion.div>
+        </motion.section>
 
-        <section className="mx-auto max-w-4xl px-6 py-24 text-center sm:px-8 sm:py-40">
+        <motion.section
+          {...sectionReveal}
+          className="mx-auto max-w-4xl px-6 py-24 text-center sm:px-8 sm:py-40"
+        >
           <div className="mb-8 text-5xl text-primary">“</div>
           <blockquote className="font-headline text-2xl font-bold leading-tight tracking-tight sm:text-3xl md:text-5xl">
             It finally feels like a real product, polished, intuitive, and
@@ -201,7 +248,7 @@ export default function TributaxPage() {
           <p className="mt-12 font-label text-sm uppercase tracking-widest text-on-surface-variant">
             Luis Suarez, CTO @ Tributax
           </p>
-        </section>
+        </motion.section>
 
       </main>
 

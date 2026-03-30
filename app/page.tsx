@@ -1,5 +1,6 @@
 "use client";
 
+import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import type { FormEvent } from "react";
 import { useEffect, useState } from "react";
@@ -71,6 +72,31 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState("home");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formStatus, setFormStatus] = useState<string | null>(null);
+  const prefersReducedMotion = useReducedMotion();
+
+  const sectionReveal = prefersReducedMotion
+    ? {}
+    : {
+        initial: { opacity: 0, y: 36 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, amount: 0.2 },
+        transition: {
+          duration: 2.4,
+          ease: [0.23, 1, 0.32, 1] as const,
+        },
+      };
+
+  const itemReveal = prefersReducedMotion
+    ? {}
+    : {
+        initial: { opacity: 0, y: 28 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, amount: 0.18 },
+        transition: {
+          duration: 2.1,
+          ease: [0.23, 1, 0.32, 1] as const,
+        },
+      };
 
   useEffect(() => {
     const updateActiveSection = () => {
@@ -154,7 +180,10 @@ export default function Home() {
       />
 
       <main className="pt-8 sm:pt-14">
-        <section className="mx-auto mb-12 flex min-h-[calc(100svh-4rem)] max-w-[1920px] flex-col justify-center px-6 pt-20 sm:mb-16 sm:px-12 md:min-h-[819px] md:px-24">
+        <motion.section
+          {...sectionReveal}
+          className="mx-auto mb-12 flex min-h-[calc(100svh-4rem)] max-w-[1920px] flex-col justify-center px-6 pt-20 sm:mb-16 sm:px-12 md:min-h-[819px] md:px-24"
+        >
           <div className="mx-auto max-w-4xl text-center">
             <h1 className="mb-6 font-headline text-[clamp(2.45rem,10vw,5.8rem)] font-bold leading-[1.02] tracking-[-0.04em] text-heading sm:mb-8">
               <span className="block text-[0.76em] font-medium text-heading/90">
@@ -179,22 +208,26 @@ export default function Home() {
               </a>
             </div>
           </div>
-        </section>
+        </motion.section>
 
-        <section
+        <motion.section
+          {...sectionReveal}
           className="mx-auto mb-32 max-w-[1920px] px-6 sm:px-12 md:mb-48 md:px-24"
           id="work"
         >
           <div className="mb-16 flex items-end justify-between md:mb-20">
-            <div>
+            <motion.div {...itemReveal}>
               <h2 className="font-headline text-3xl font-bold tracking-tight md:text-4xl">
                 CASE STUDIES
               </h2>
               <p className="mt-3 font-body text-sm text-on-surface-variant md:text-base">
                 In-depth explorations of craft and strategy
               </p>
-            </div>
-            <div className="hidden h-px w-1/3 bg-outline-variant/20 md:block" />
+            </motion.div>
+            <motion.div
+              {...itemReveal}
+              className="hidden h-px w-1/3 bg-outline-variant/20 md:block"
+            />
           </div>
 
           <div className="grid grid-cols-1 gap-20 md:gap-32">
@@ -205,55 +238,67 @@ export default function Home() {
                   project.hidden ? "hidden" : "grid"
                 }`}
               >
-                <div
+                <motion.div
+                  {...itemReveal}
                   className={`overflow-hidden rounded-lg ${
                     project.title === "Nurture Nest" ? "" : "bg-surface-container"
                   } ${project.reverse ? "md:order-2 md:col-span-8" : "md:col-span-8"}`}
                 >
                   <Image
                     alt={project.alt}
-                    className={`${project.imageClassName} transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-105`}
+                    className={project.imageClassName}
                     height={1200}
                     priority={!project.reverse}
                     src={project.image}
                     style={project.imageStyle}
                     width={1600}
                   />
-                </div>
-                <div
+                </motion.div>
+                <motion.div
+                  {...itemReveal}
                   className={`flex flex-col gap-6 ${
                     project.reverse ? "md:order-1 md:col-span-4" : "md:col-span-4"
                   }`}
                 >
-                  <div className="flex gap-2">
+                  <motion.div {...itemReveal} className="flex gap-2">
                     <span className="bg-surface-container-highest px-3 py-1 font-label text-[10px] uppercase tracking-widest text-primary">
                       {project.category}
                     </span>
                     <span className="bg-surface-container-highest px-3 py-1 font-label text-[10px] uppercase tracking-widest text-on-surface-variant">
                       {project.year}
                     </span>
-                  </div>
-                  <h3 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">
+                  </motion.div>
+                  <motion.h3
+                    {...itemReveal}
+                    className="font-headline text-3xl font-bold tracking-tight sm:text-4xl"
+                  >
                     {project.title}
-                  </h3>
-                  <p className="font-body leading-relaxed text-on-surface-variant">
+                  </motion.h3>
+                  <motion.p
+                    {...itemReveal}
+                    className="font-body leading-relaxed text-on-surface-variant"
+                  >
                     {project.description}
-                  </p>
-                  <a
+                  </motion.p>
+                  <motion.a
+                    {...itemReveal}
                     className="font-label text-sm tracking-[0.1em] !text-primary transition-all hover:underline hover:decoration-2 hover:underline-offset-8"
                     href={project.href}
                     rel={project.href.startsWith("http") ? "noreferrer" : undefined}
                     target={project.href.startsWith("http") ? "_blank" : undefined}
                   >
                     {project.linkLabel} →
-                  </a>
-                </div>
+                  </motion.a>
+                </motion.div>
               </article>
             ))}
           </div>
-        </section>
+        </motion.section>
 
-        <section className="mb-24 bg-surface-container-low px-6 py-20 sm:px-12 md:px-24 md:py-32">
+        <motion.section
+          {...sectionReveal}
+          className="mb-24 bg-surface-container-low px-6 py-20 sm:px-12 md:px-24 md:py-32"
+        >
           <div className="mx-auto max-w-[1920px]">
             <div className="mb-12 md:mb-16">
               <h2 className="mb-4 font-headline text-3xl font-bold">
@@ -266,14 +311,15 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
               {archiveProjects.map((project) => (
-                <a
+                <motion.a
+                  {...itemReveal}
                   key={project.title}
                   href={project.href}
                   rel={project.href.startsWith("http") ? "noreferrer" : undefined}
                   target={project.href.startsWith("http") ? "_blank" : undefined}
                   className="group flex min-h-72 flex-col justify-between rounded-lg bg-surface-container p-6 transition-colors duration-300 hover:bg-surface-container-high sm:aspect-square sm:p-8"
                 >
-                  <div>
+                  <div key={`${project.title}-archive-copy`}>
                     <span className="mb-4 block font-label text-[10px] uppercase tracking-widest text-primary">
                       {project.eyebrow}
                     </span>
@@ -284,7 +330,10 @@ export default function Home() {
                       {project.description}
                     </p>
                   </div>
-                  <div className="flex justify-end text-primary">
+                  <div
+                    key={`${project.title}-archive-arrow`}
+                    className="flex justify-end text-primary"
+                  >
                     <svg
                       aria-hidden="true"
                       className="h-5 w-5"
@@ -300,13 +349,14 @@ export default function Home() {
                       />
                     </svg>
                   </div>
-                </a>
+                </motion.a>
               ))}
             </div>
           </div>
-        </section>
+        </motion.section>
 
-        <section
+        <motion.section
+          {...sectionReveal}
           className="mx-auto mb-24 max-w-[1920px] px-6 sm:px-12 md:px-24"
           id="contact"
         >
@@ -389,10 +439,11 @@ export default function Home() {
               </div>
             </form>
           </div>
-        </section>
+        </motion.section>
       </main>
 
-      <footer
+      <motion.footer
+        {...sectionReveal}
         className="w-full border-t border-[color:var(--button-border)] bg-background"
         id="footer"
       >
@@ -401,7 +452,7 @@ export default function Home() {
             © 2026 designed and developed by jaden cook
           </p>
         </div>
-      </footer>
+      </motion.footer>
     </>
   );
 }
