@@ -194,8 +194,8 @@ export default function Home() {
               </span>
             </h1>
             <p className="mx-auto mb-10 max-w-2xl font-body text-lg leading-relaxed text-on-surface-variant sm:mb-12 sm:text-xl md:text-2xl">
-              I&apos;m a UI/UX designer with a front-end background, focused on
-              creating clean, intuitive digital experiences.
+              I&apos;m a Product Designer with a frontend background focused on
+              building thoughtful, user-centered digital experiences.
             </p>
             <div className="flex justify-center gap-4 sm:gap-6">
               <a
