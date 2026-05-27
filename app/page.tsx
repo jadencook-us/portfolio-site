@@ -200,7 +200,7 @@ export default function Home() {
             <div className="flex justify-center gap-4 sm:gap-6">
               <a
                 className="rounded-md bg-[linear-gradient(135deg,var(--primary)_0%,var(--primary-strong)_100%)] px-6 py-4 text-center font-label text-xs font-bold uppercase tracking-[0.18em] !text-[color:var(--button-text)] transition-transform duration-300 hover:scale-105 sm:px-8 sm:text-sm sm:tracking-widest"
-                href="/jaden-cook-resume-2026.pdf"
+                href="/Resume2026-Jaden-Cook.pdf"
                 rel="noreferrer"
                 target="_blank"
               >
